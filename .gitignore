@@ -58,3 +58,4 @@ _ReSharper*/
 ~$*
 
 packages
+!packages.config
