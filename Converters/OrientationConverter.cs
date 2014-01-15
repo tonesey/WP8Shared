@@ -4,7 +4,7 @@ using System.Windows.Data;
 using Microsoft.Phone.Controls;
 
 
-namespace ScaleFinderWP7.Converters
+namespace Wp8Shared.Converters
 {
     public class OrientationConverter : IValueConverter
     {

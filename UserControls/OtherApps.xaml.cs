@@ -10,7 +10,7 @@ using System;
 using System.Windows.Media.Imaging;
 using System.Threading;
 
-namespace Wp7Shared.UserControls
+namespace Wp8Shared.UserControls
 {
     public partial class OtherApps
     {

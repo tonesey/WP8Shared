@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Collections.Generic;
 
-namespace Wp7Shared.UserControls
+namespace Wp8Shared.UserControls
 {
 
     public enum Genre

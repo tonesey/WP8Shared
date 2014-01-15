@@ -218,6 +218,7 @@
   <ItemGroup>
     <Compile Include="Behaviours\LoadedBehaviour.cs" />
     <Compile Include="Converters\FavoriteBrushConverter.cs" />
+    <Compile Include="Converters\OrientationConverter.cs" />
     <Compile Include="Converters\ProgBarConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="DiceCoefficientExtensions.cs" />
@@ -237,14 +238,21 @@
     <Compile Include="Sensors\ShakeDetector.cs" />
     <Compile Include="Sound\SoundHelper.cs" />
     <Compile Include="UserControls\MyHubTile.cs" />
+    <Compile Include="UserControls\MyMsgbox.cs" />
     <Compile Include="UserControls\OtherApps.xaml.cs">
       <DependentUpon>OtherApps.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MyMsgboxContent.xaml.cs">
+      <DependentUpon>MyMsgboxContent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\GenericUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="UserControls\OtherApps.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MyMsgboxContent.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -287,6 +295,8 @@
     <Resource Include="Resources\PeppaPig_ru.png" />
     <Resource Include="Resources\Puffi.png" />
     <Resource Include="Resources\CinicoTV.png" />
+    <Content Include="Assets\btn_no.png" />
+    <Content Include="Assets\btn_yes.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +310,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Content Include="Fonts\andyb.ttf" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

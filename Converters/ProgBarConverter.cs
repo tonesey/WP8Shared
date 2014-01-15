@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 
 
-namespace Wp7Shared.Converters
+namespace Wp8Shared.Converters
 {
     public class ProgBarConverter : IValueConverter
     {
