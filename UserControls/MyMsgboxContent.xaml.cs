@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.ComponentModel;
 using System.Windows.Media.Animation;
+using System;
 
 namespace Wp8Shared.UserControls
 {
-    public enum MsgboxMode { 
+    public enum MsgboxMode
+    {
         Ok,
         YesNo
     }
@@ -21,6 +23,7 @@ namespace Wp8Shared.UserControls
     }
 
     public delegate void MsgboxClosedEventHandler(MsgboxResponse response);
+
 
     public partial class MyMsgboxContent
     {
@@ -48,29 +51,35 @@ namespace Wp8Shared.UserControls
 
         private string _text = string.Empty;
 
+        Action<MsgboxResponse> _completed;
+
+        // public MyMsgboxContent(Popup popup, MsgboxMode mode, string text, Action<MsgboxResponse> completed = null)
         public MyMsgboxContent(Popup popup, MsgboxMode mode, string text)
         {
             InitializeComponent();
-            LocalizeUI();
+            //LocalizeUI();
             DataContext = this;
             _popup = popup;
             _mode = mode;
             _text = text;
+            // _completed = completed;
         }
 
-        private void LocalizeUI()
-        {
-        }
+        //private void LocalizeUI()
+        //{
+        //}
 
         private void MsgboxClosed(MsgboxResponse res)
         {
             if (_popup != null)
             {
                 _popup.IsOpen = false;
+
                 if (MsgboxClosedEvent != null)
                 {
                     MsgboxClosedEvent(res);
                 }
+                //_completed(res);
             }
         }
 

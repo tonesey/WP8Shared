@@ -10,29 +10,48 @@ using System.Windows.Controls.Primitives;
 namespace Wp8Shared.UserControls
 {
 
-
     public class MyMsgbox
     {
         static Popup _popup = null;
-        static MyMsgboxContent _popupChild = null;
-        //static Delegate _act = null;
         static Page _parent;
+        static MyMsgboxContent _popupChild = null;
+        static Action<MsgboxResponse> _completed;
 
-        public static event MsgboxClosedEventHandler MsgboxClosedEvent;
-
-        //public static void Show(Page parent, PageOrientation orientation, string text, Delegate act)
-        public static void Show(Page parent, PageOrientation orientation, string text)
+        public static void Show(PhoneApplicationPage parent, 
+                                MsgboxMode mode, 
+                                string text, 
+                                Action<MsgboxResponse> completed = null,
+                                int width = 400, int heigth = 400)
         {
             _parent = parent;
-            //_act = act;
+            _completed = completed;
             _popup = new Popup();
-            _popupChild = new MyMsgboxContent(_popup, MsgboxMode.Ok, text);
-            _popupChild.Height = 400;
-            _popupChild.Width = 400;
-            _popupChild.PageOrientation = orientation;
+
+            _popupChild = new MyMsgboxContent(_popup, mode, text);
+            _popupChild.Height = heigth;
+            _popupChild.Width = width;
+            _popupChild.PageOrientation = parent.Orientation;
+
             _popup.Child = _popupChild;
-            _popup.VerticalOffset = 200;
-            _popup.HorizontalOffset = 30;
+
+            switch (parent.Orientation)
+            {
+                case PageOrientation.Landscape:
+                case PageOrientation.LandscapeLeft:
+                case PageOrientation.LandscapeRight:
+                    _popup.VerticalOffset = (parent.ActualWidth - _popupChild.Width) / 2;
+                    _popup.HorizontalOffset = (parent.ActualHeight - _popupChild.Height) / 2;
+                    break;
+                case PageOrientation.Portrait:
+                case PageOrientation.PortraitDown:
+                case PageOrientation.PortraitUp:
+                    _popup.VerticalOffset = (parent.ActualHeight - _popupChild.Height) / 2;
+                    _popup.HorizontalOffset = (parent.ActualWidth - _popupChild.Width) / 2;
+                    break;
+                default:
+                    break;
+            }
+
             _popup.IsOpen = true;
             _popupChild.MsgboxClosedEvent -= _popupChild_MsgboxClosedEvent;
             _popupChild.MsgboxClosedEvent += _popupChild_MsgboxClosedEvent;
@@ -42,9 +61,10 @@ namespace Wp8Shared.UserControls
         static void _popupChild_MsgboxClosedEvent(MsgboxResponse response)
         {
             _parent.IsEnabled = true;
-            if (MsgboxClosedEvent != null) MsgboxClosedEvent(response);
+            if (_completed != null)
+            {
+                _completed(response);
+            }
         }
-
-      
     }
 }
