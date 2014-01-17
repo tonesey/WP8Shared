@@ -44,7 +44,8 @@
                 <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="TextBlockContent" Grid.Row="0" Margin="5,0,5,5"
+            <ScrollViewer Grid.Row="0" Margin="5,0,5,5">
+            <TextBlock x:Name="TextBlockContent" 
 					FontFamily="..\Fonts\andyb.TTF#Andy" 
 					Foreground="Lime" 
 					FontSize="50" 
@@ -52,7 +53,8 @@
 					HorizontalAlignment="Center" 
 					VerticalAlignment="Center" 
                     TextWrapping="Wrap"
-					Opacity="1"/>
+					Opacity="0.8"/>
+            </ScrollViewer>
             <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Visibility="Visible">
                 <Button x:Name="ButtonNo" BorderBrush="Transparent" BorderThickness="0" Width="100" Height="100" Padding="0" Tap="ButtonNo_Tap">
                     <Image Source="/Assets/btn_no.png"/>

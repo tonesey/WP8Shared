@@ -13,7 +13,7 @@ namespace Wp8Shared.UserControls
     public class MyMsgbox
     {
         static Popup _popup = null;
-        static Page _parent;
+        static PhoneApplicationPage _parent;
         static MyMsgboxContent _popupChild = null;
         static Action<MsgboxResponse> _completed;
 

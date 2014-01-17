@@ -43,8 +43,6 @@ namespace Wp8Shared.UserControls
 
         private readonly Popup _popup;
 
-        //public MsgboxMode Mode { get; set; }
-
         public MsgboxResponse Response { get; private set; }
 
         MsgboxMode _mode = MsgboxMode.Ok;
@@ -63,6 +61,9 @@ namespace Wp8Shared.UserControls
             _mode = mode;
             _text = text;
             // _completed = completed;
+
+            ButtonNo.Visibility = Visibility.Collapsed;
+            ButtonYes.Visibility = Visibility.Collapsed;
         }
 
         //private void LocalizeUI()
