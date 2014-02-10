@@ -30,6 +30,8 @@ namespace Wp8Shared.Helpers
         private int _launchCount = 0;
         private bool _reviewed = false;
 
+        private bool _isLicensedApp = false;
+
         public static readonly FeedbackHelper Default = new FeedbackHelper();
 
         private FeedbackState _state = FeedbackState.Inactive;
@@ -42,19 +44,24 @@ namespace Wp8Shared.Helpers
 
         private FeedbackHelper()
         {
-
         }
 
         /// <summary>
         /// This should only be called when the app is Launching
         /// </summary>
-        public void Launching()
+        public void Launching(bool isLicensedApp)
         {
-            var license = new Microsoft.Phone.Marketplace.LicenseInformation();
+            //var license = new Microsoft.Phone.Marketplace.LicenseInformation();
+            //// Only load state if not trial
+            //if (!license.IsTrial())
+            //{
+            //    this.LoadState();
+            //}
 
-            // Only load state if not trial
-            if (!license.IsTrial())
+            if (isLicensedApp)
+            {
                 this.LoadState();
+            }
 
             // Uncomment for testing
             //this._state = FeedbackState.FirstReview;

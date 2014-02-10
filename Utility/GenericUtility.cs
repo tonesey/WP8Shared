@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Windows.Storage;
 
-namespace Wp7Shared.Utility
+namespace Wp8Shared.Utility
 {
     public static class GenericUtility
     {
@@ -21,7 +22,17 @@ namespace Wp7Shared.Utility
             }
         }
 
-
+        /// <summary>
+        /// Get path for image located in Isolated Storage.
+        /// </summary>
+        public static string GetIsolatedStorageFullImagePath(StorageFile file)
+        {
+#if NETFX_CORE
+    return Path.Combine("ms-appdata:///Local/", file.Name);
+#elif WINDOWS_PHONE
+            return file.Path;
+#endif
+        }
 
         public static string ReplaceEx(string original, string pattern, string replacement)
         {
@@ -47,5 +58,7 @@ namespace Wp7Shared.Utility
             return new string(chars, 0, count);
         }
 
+
+       
     }
 }

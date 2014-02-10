@@ -46,9 +46,9 @@
 
             <ScrollViewer Grid.Row="0" Margin="5,0,5,5">
             <TextBlock x:Name="TextBlockContent" 
-					FontFamily="..\Fonts\andyb.TTF#Andy" 
+					FontFamily="..\Fonts\BuxtonSketch.ttf#Buxton Sketch" 
 					Foreground="Lime" 
-					FontSize="50" 
+					FontSize="40" 
                     Text="test test test test test test test test test test"
 					HorizontalAlignment="Center" 
 					VerticalAlignment="Center" 
