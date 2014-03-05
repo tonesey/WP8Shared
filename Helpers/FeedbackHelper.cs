@@ -51,13 +51,7 @@ namespace Wp8Shared.Helpers
         /// </summary>
         public void Launching(bool isLicensedApp)
         {
-            //var license = new Microsoft.Phone.Marketplace.LicenseInformation();
-            //// Only load state if not trial
-            //if (!license.IsTrial())
-            //{
-            //    this.LoadState();
-            //}
-
+            //loaded only if at least one item was bought
             if (isLicensedApp)
             {
                 this.LoadState();
