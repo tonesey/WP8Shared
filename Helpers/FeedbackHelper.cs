@@ -11,7 +11,7 @@ namespace Wp8Shared.Helpers
         Inactive,
         FirstReview,
         SecondReview,
-        //Feedback
+        Feedback
     }
 
     /// <summary>
@@ -24,8 +24,8 @@ namespace Wp8Shared.Helpers
     {
         private const string LAUNCH_COUNT = "LAUNCH_COUNT";
         private const string REVIEWED = "REVIEWED";
-        private const int FIRST_COUNT = 5;
-        private const int SECOND_COUNT = 10;
+        private const int FIRST_COUNT = 3;
+        private const int SECOND_COUNT = 5;
 
         private int _launchCount = 0;
         private bool _reviewed = false;
@@ -58,7 +58,7 @@ namespace Wp8Shared.Helpers
             }
 
             // Uncomment for testing
-            //this._state = FeedbackState.FirstReview;
+            this._state = FeedbackState.FirstReview;
             //this._state = FeedbackState.SecondReview;
         }
 
